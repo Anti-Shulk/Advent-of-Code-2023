@@ -8,15 +8,11 @@ pub fn part_one(input: &str) -> Option<u32> {
             .lines()
             .map(|line| {
                 (
-                    line.chars().find(|s| s.is_numeric()),
-                    line.chars().rev().find(|s| s.is_numeric()),
+                    line.chars().find(|s| s.is_numeric()).unwrap(),
+                    line.chars().rev().find(|s| s.is_numeric()).unwrap(),
                 )
             })
-            .map(|(a, b)| {
-                format!("{}{}", a.unwrap(), b.unwrap())
-                    .parse::<u32>()
-                    .unwrap()
-            })
+            .map(|(a, b)| format!("{a}{b}").parse::<u32>().unwrap())
             .sum(),
     )
 }
